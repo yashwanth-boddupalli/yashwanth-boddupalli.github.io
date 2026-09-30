@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yashwanth Boddupalli — Learning. Building. Improving.</title>
+<meta name="description" content="Yashwanth Boddupalli — a second-year CSE Data Science student who learns by building. Projects across software, AI, data science, IoT and cybersecurity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<style>
+/* capture-mode: deterministic final state for Figma capture (hash contains 'figmacapture') */
+.capture-mode .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+.capture-mode .blob{animation:none !important}
+.capture-mode .scroll-cue{display:none !important}
+</style>
+<style>
+:root{
+  --bg:#06070d;
+  --bg2:#0a0c16;
+  --text:#eef0f8;
+  --muted:#9aa1b8;
+  --faint:#6b7288;
+  --violet:#8b5cf6;
+  --cyan:#22d3ee;
+  --pink:#f472b6;
+  --glass:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.02));
+  --stroke:rgba(255,255,255,.09);
+  --radius:22px;
+  --font-d:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-b:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(139,92,246,.45);color:#fff}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--violet),var(--cyan));border-radius:8px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* ---------- background ---------- */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(1200px 800px at 80% -10%,rgba(139,92,246,.14),transparent 60%),radial-gradient(1000px 700px at 10% 20%,rgba(34,211,238,.10),transparent 60%),var(--bg)}
+.blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
+.blob.b1{width:520px;height:520px;background:#7c3aed;top:-140px;left:-120px}
+.blob.b2{width:460px;height:460px;background:#0e7490;top:30%;right:-140px;animation-delay:-8s}
+.blob.b3{width:420px;height:420px;background:#a21caf;bottom:-160px;left:32%;animation-delay:-14s;opacity:.35}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.12)}}
+.grid-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%);
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+section{padding:104px 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.eyebrow::before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:2px}
+h2{font-family:var(--font-d);font-size:clamp(30px,4.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+.sub{color:var(--muted);max-width:640px;font-size:16.5px}
+.grad{background:linear-gradient(92deg,var(--cyan) 0%,var(--violet) 55%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(6,7,13,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-color:rgba(255,255,255,.07)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 28px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--font-d);font-weight:700;font-size:21px;letter-spacing:-.01em}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14.5px;color:var(--muted);padding:9px 14px;border-radius:12px;transition:color .25s,background .25s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-links a.active{color:#fff;background:rgba(139,92,246,.16)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:10px 20px;border-radius:14px;background:linear-gradient(135deg,var(--violet),#6d28d9);color:#fff;box-shadow:0 8px 28px rgba(139,92,246,.35);transition:transform .25s,box-shadow .25s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(139,92,246,.5)}
+@media(max-width:860px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;position:relative}
+.hero-inner{max-width:1140px;margin:0 auto;padding:0 28px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:100px;background:var(--glass);border:1px solid var(--stroke);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:13.5px;color:var(--muted);margin-bottom:30px}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--font-d);font-size:clamp(46px,8vw,92px);font-weight:700;letter-spacing:-.035em;line-height:1.04;margin-bottom:24px}
+.hero h1 .line{display:block}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:620px;margin-bottom:18px}
+.rotator{font-family:var(--font-d);font-size:15px;color:var(--cyan);min-height:26px;margin-bottom:38px}
+.rotator .caret{display:inline-block;width:2px;height:17px;background:var(--cyan);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:54px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:16px;font-weight:600;font-size:15.5px;transition:transform .28s cubic-bezier(.2,.8,.3,1.2),box-shadow .28s,background .28s;will-change:transform}
+.btn-primary{background:linear-gradient(135deg,var(--violet),#6d28d9);color:#fff;box-shadow:0 10px 34px rgba(139,92,246,.4)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 44px rgba(139,92,246,.55)}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid var(--stroke);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text)}
+.btn-ghost:hover{transform:translateY(-3px);background:rgba(255,255,255,.09);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.hero-stats{display:flex;gap:14px;flex-wrap:wrap}
+.stat{padding:16px 24px;border-radius:18px;background:var(--glass);border:1px solid var(--stroke);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.45)}
+.stat b{display:block;font-family:var(--font-d);font-size:24px;letter-spacing:-.02em}
+.stat b em{font-style:normal;background:linear-gradient(92deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat small{color:var(--muted);font-size:12.5px;letter-spacing:.04em}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--faint);font-size:12px;letter-spacing:.22em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue .wheel{width:24px;height:38px;border:2px solid var(--faint);border-radius:14px;position:relative}
+.scroll-cue .wheel::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:4px;background:var(--cyan);animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}60%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ---------- glass cards ---------- */
+.card{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--radius);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:34px;transition:transform .35s cubic-bezier(.2,.8,.3,1.1),border-color .35s,box-shadow .35s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.4);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 0 1px rgba(139,92,246,.12)}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at var(--mx,50%) var(--my,0%),rgba(139,92,246,.14),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+.card:hover::before{opacity:1}
+.icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;background:linear-gradient(135deg,rgba(139,92,246,.22),rgba(34,211,238,.14));border:1px solid rgba(139,92,246,.3)}
+.card h3{font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14.8px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3,.grid-2{grid-template-columns:1fr}}
+@media(max-width:560px){.grid-4{grid-template-columns:1fr}}
+
+/* ---------- chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{font-size:13px;font-weight:500;padding:8px 16px;border-radius:100px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);color:#d6c9ff;transition:transform .25s,background .25s}
+.chip:hover{transform:translateY(-2px);background:rgba(139,92,246,.2)}
+.chip.cyan{background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.25);color:#a5ecfa}
+.chip.plain{background:rgba(255,255,255,.05);border-color:var(--stroke);color:var(--muted)}
+
+/* ---------- bento projects ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-top:48px}
+.bento .card{margin:0}
+.span6{grid-column:span 6}.span4{grid-column:span 4}.span3{grid-column:span 3}.span2{grid-column:span 2}
+@media(max-width:900px){.span4,.span3,.span2{grid-column:span 6}}
+.proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:6px}
+.tag{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:100px;white-space:nowrap}
+.tag.featured{background:linear-gradient(135deg,var(--violet),#6d28d9);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,.4)}
+.tag.concept{background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:#a5ecfa}
+.tag.academic{background:rgba(255,255,255,.06);border:1px solid var(--stroke);color:var(--muted)}
+.tag.hack{background:rgba(244,114,182,.12);border:1px solid rgba(244,114,182,.32);color:#f9a8d4}
+.proj-links{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.plink{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 22px;border-radius:13px;border:1px solid var(--stroke);background:rgba(255,255,255,.05);transition:transform .25s,background .25s,border-color .25s}
+.plink:hover{transform:translateY(-2px);background:rgba(139,92,246,.16);border-color:rgba(139,92,246,.45)}
+.plink.solid{background:linear-gradient(135deg,var(--violet),#6d28d9);border:none;color:#fff;box-shadow:0 8px 24px rgba(139,92,246,.35)}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:20px 0 4px}
+.flow span{font-size:12.5px;padding:7px 13px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--stroke);color:var(--muted);white-space:nowrap}
+.flow i{color:var(--violet);font-style:normal;font-size:13px}
+.feat-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;margin-top:20px}
+.feat-list li{list-style:none;font-size:14px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.feat-list li::before{content:"▸";color:var(--cyan);font-weight:700}
+@media(max-width:700px){.feat-list{grid-template-columns:1fr}}
+.glow-card{border-color:rgba(139,92,246,.35);box-shadow:0 0 60px rgba(139,92,246,.12)}
+</style>
+
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#home">yashwanth<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#exploring">Exploring</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#hackathons">Hackathons</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact" class="nav-cta">Let's talk →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-badge reveal in"><span class="dot"></span> CSE (Data Science) · 2nd Year · CMR CET, Hyderabad</div>
+    <h1>
+      <span class="line">Learning.</span>
+      <span class="line">Building.</span>
+      <span class="line grad">Improving.</span>
+    </h1>
+    <p class="hero-sub">I'm <b style="color:#fff">Yashwanth Boddupalli</b> — a second-year CSE Data Science student who learns by building. I turn ideas into real projects across software, AI, data and cybersecurity.</p>
+    <div class="rotator">Currently exploring → <span id="typed"></span><span class="caret"></span></div>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#projects">See my projects ↓</a>
+      <a class="btn btn-ghost" href="https://github.com/yashwanth-boddupalli" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b><em>6</em></b><small>projects built &amp; exploring</small></div>
+      <div class="stat"><b><em>4</em></b><small>hackathons with my team</small></div>
+      <div class="stat"><b><em>8</em></b><small>technologies in my workflow</small></div>
+      <div class="stat"><b><em>1</em></b><small>SaaS concept in progress</small></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="wheel"></div>scroll</div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">About me</div>
+    <h2 class="reveal">A student who <span class="grad">learns by building</span></h2>
+    <p class="sub reveal">I'm early in my technical journey — and instead of pretending otherwise, I experiment. A lot.</p>
+    <div class="grid-2" style="margin-top:44px">
+      <div class="card reveal">
+        <div class="icon">👋</div>
+        <h3>Hey, I'm Yashwanth</h3>
+        <p>I'm a second-year B.Tech student in Computer Science &amp; Engineering (Data Science) at CMR College of Engineering &amp; Technology, Hyderabad.</p>
+        <p style="margin-top:12px">My projects have taken me across C programming and data structures, Arduino and IoT, web development, AI-assisted development and SaaS concepts. I've worked on things like <b style="color:#fff">LCO&nbsp;CONNECT</b> — an idea for digitizing local cable &amp; broadband operations — alongside academic projects in embedded systems and web tech.</p>
+        <p style="margin-top:12px">Right now I'm exploring <b style="color:#fff">data science</b>, <b style="color:#fff">AI</b>, <b style="color:#fff">software development</b> and <b style="color:#fff">cybersecurity</b> — interested in how technology solves practical problems. I enjoy experimenting, building, breaking things, fixing them, and learning along the way.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="icon">⚙️</div>
+        <h3>How I work</h3>
+        <p style="margin-bottom:18px">I use modern AI-assisted workflows for rapid prototyping, debugging and experimentation — then I dig in, understand the code, and iterate until it works.</p>
+        <div class="flow" style="margin:0">
+          <span>Idea</span><i>→</i><span>Research</span><i>→</i><span>AI prototype</span><i>→</i><span>Build</span><i>→</i><span>Debug</span><i>→</i><span>Test</span><i>→</i><span>Deploy</span><i>→</i><span>Iterate</span>
+        </div>
+        <div class="chips">
+          <span class="chip">GitHub</span><span class="chip">Vercel</span><span class="chip">Supabase</span><span class="chip">VS Code</span>
+        </div>
+        <p style="margin-top:20px;font-size:13.5px;color:var(--faint)">Idea → prototype → frontend → backend → GitHub → Vercel → test → iterate. Shipping beats theorizing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLORING ============ -->
+<section id="exploring" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">What I'm exploring</div>
+    <h2 class="reveal">Curious about <span class="grad">a lot of things</span></h2>
+    <p class="sub reveal">Studying CSE Data Science gave me the foundation — curiosity did the rest. Here's where my attention is right now.</p>
+    <div class="grid-4">
+      <div class="card reveal"><div class="icon">📊</div><h3>Data Science</h3><p>Python, data analysis, ML fundamentals and data-oriented problem solving. My degree's home turf.</p></div>
+      <div class="card reveal d1"><div class="icon">💻</div><h3>Software Development</h3><p>Modern frontend with React and TypeScript, backend integration, and shipping real deployments.</p></div>
+      <div class="card reveal d2"><div class="icon">🤖</div><h3>Artificial Intelligence</h3><p>AI-assisted development, generative AI and conversational systems — like my WeatherGPT hackathon concept.</p></div>
+      <div class="card reveal d3"><div class="icon">🔐</div><h3>Cybersecurity</h3><p>An area I'm actively learning — exploring security fundamentals and how systems get attacked and defended.</p></div>
+    </div>
+    <div class="chips reveal" style="margin-top:26px">
+      <span class="chip plain">Web Development</span><span class="chip plain">IoT &amp; Embedded Systems</span><span class="chip plain">UI / UX</span><span class="chip plain">Rapid Prototyping</span><span class="chip plain">SaaS Products</span><span class="chip plain">Freelancing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills &amp; technologies</div>
+    <h2 class="reveal">My <span class="grad">toolbox</span></h2>
+    <p class="sub reveal">No fake percentage bars here — these are the technologies and tools I've actually worked with and explored.</p>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="icon">⌨️</div><h3>Languages</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="card reveal d1">
+        <div class="icon">🎨</div><h3>Frontend</h3>
+        <div class="chips"><span class="chip">React</span><span class="chip">Tailwind CSS</span><span class="chip cyan">Responsive design</span><span class="chip cyan">Glassmorphism</span><span class="chip cyan">Micro-interactions</span></div>
+      </div>
+      <div class="card reveal d2">
+        <div class="icon">🗄️</div><h3>Backend &amp; Data</h3>
+        <div class="chips"><span class="chip">Supabase</span><span class="chip">Auth</span><span class="chip">Row Level Security</span><span class="chip">SQL Triggers</span><span class="chip">Database design</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🧰</div><h3>Dev Workflow</h3>
+        <div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span><span class="chip">Vercel</span></div>
+        <p style="margin-top:14px;font-size:13.5px">Concepts: data structures, linked lists, OOP, algorithms, problem solving.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="icon">✨</div><h3>AI Platforms Explored</h3>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Lovable</span><span class="chip">Framer AI</span><span class="chip">Webflow</span><span class="chip">Manus AI</span><span class="chip">Devin</span><span class="chip">Codex</span></div>
+      </div>
+      <div class="card reveal d2">
+        <div class="icon">🖌️</div><h3>Design &amp; Product</h3>
+        <div class="chips"><span class="chip">Figma</span><span class="chip">Gamma</span><span class="chip cyan">Bento grids</span><span class="chip cyan">Aurora gradients</span><span class="chip cyan">Dark mode UI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Featured projects</div>
+    <h2 class="reveal">Things I've <span class="grad">built &amp; explored</span></h2>
+    <p class="sub reveal">From a SaaS concept for local businesses to Arduino experiments — each one taught me something new.</p>
+
+    <div class="bento">
+      <!-- LCO CONNECT — featured -->
+      <div class="card span6 glow-card reveal">
+        <div class="proj-top">
+          <div class="icon" style="margin-bottom:0">📡</div>
+          <span class="tag featured">★ Featured project</span>
+        </div>
+        <h3 style="font-size:30px;margin:18px 0 4px">LCO CONNECT</h3>
+        <p style="color:var(--cyan);font-size:14px;font-weight:600;letter-spacing:.06em;margin-bottom:12px">MULTI-TENANT SAAS · WEB APPLICATION</p>
+        <p style="max-width:760px">A platform concept for local cable TV, broadband and Wi-Fi operators — the people who still run on phone calls, WhatsApp and paper records. LCO CONNECT brings customers, payments, complaints, technicians and plans into one digital workspace. It grew out of thinking about a real local business, Tiranga Cable TV &amp; Internet: <i style="color:#fff">from solving a real local problem to exploring a scalable SaaS solution.</i></p>
+        <div class="flow">
+          <span>LCO registration</span><i>→</i><span>Verification</span><i>→</i><span>Super Admin approval</span><i>→</i><span>LCO workspace</span><i>→</i><span>Customers</span><i>→</i><span>Payments</span><i>→</i><span>Service requests</span>
+        </div>
+        <ul class="feat-list">
+          <li>Multi-tenant architecture — each operator gets its own workspace</li>
+          <li>Supabase auth, RLS policies, SQL triggers &amp; user management</li>
+          <li>Customer onboarding, verification &amp; service management</li>
+          <li>Broadband &amp; cable plan billing with UPI payment exploration</li>
+          <li>Admin dashboard: customers, payments, complaints, requests</li>
+          <li>Technician dashboard: tickets, status updates, closures</li>
+        </ul>
+        <div class="chips"><span class="chip">React</span><span class="chip">Tailwind CSS</span><span class="chip">Supabase</span><span class="chip">SQL</span><span class="chip">Vercel</span><span class="chip">AI-assisted dev</span></div>
+        <div class="proj-links">
+          <a class="plink solid" href="https://lco-connect-project.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a>
+          <a class="plink" href="https://github.com/yashwanth-boddupalli/lco-connect-project" target="_blank" rel="noopener">Source code ↗</a>
+        </div>
+      </div>
+
+      <!-- Dev Dash -->
+      <div class="card span3 reveal">
+        <div class="proj-top"><div class="icon" style="margin-bottom:0">🎓</div><span class="tag concept">Concept</span></div>
+        <h3 style="margin:18px 0 4px">Dev Dash</h3>
+        <p style="color:var(--cyan);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:12px">AI · STUDENT PLATFORM</p>
+        <p>An AI-powered student counselling &amp; college decision-support concept — helping students make sense of options after entrance exam results through AI-assisted recommendations and organized information. A prototype-stage exploration, not a deployed product.</p>
+        <div class="chips"><span class="chip">AI</span><span class="chip">Product concept</span><span class="chip">Prototyping</span></div>
+      </div>
+
+      <!-- VAKaura -->
+      <div class="card span3 reveal d1">
+        <div class="proj-top"><div class="icon" style="margin-bottom:0">🔌</div><span class="tag academic">IoT · Academic</span></div>
+        <h3 style="margin:18px 0 4px">VAKaura</h3>
+        <p style="color:var(--cyan);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:12px">IOT · EMBEDDED SYSTEMS</p>
+        <p>An academic IoT project with Arduino Uno, ultrasonic &amp; piezoelectric sensors, MPU6050, HX711 load cell, LEDs and buzzers — experimenting with real-time monitoring, sensor input and embedded programming.</p>
+        <div class="chips"><span class="chip">Arduino</span><span class="chip">Sensors</span><span class="chip">Embedded C</span></div>
+      </div>
+
+      <!-- ATM -->
+      <div class="card span2 reveal">
+        <div class="icon">🏧</div><h3>ATM Simulation</h3>
+        <p>C program practicing data structures — withdrawals, deposits, balance inquiry, mini statements, PIN validation and multi-user transaction handling with structs &amp; linked lists.</p>
+        <div class="chips"><span class="chip">C</span><span class="chip">Linked Lists</span></div>
+      </div>
+
+      <!-- E-commerce cart -->
+      <div class="card span2 reveal d1">
+        <div class="icon">🛒</div><h3>E-Commerce Cart</h3>
+        <p>Academic project exploring how linked lists manage products and cart operations — dynamic data management, product handling and cart manipulation in C.</p>
+        <div class="chips"><span class="chip">C</span><span class="chip">Data Structures</span></div>
+      </div>
+
+      <!-- Pendulum -->
+      <div class="card span2 reveal d2">
+        <div class="icon">⏱️</div><h3>Digital Pendulum</h3>
+        <p>Arduino-based pendulum movement measurement — sensor input, embedded processing and LCD display output. An academic dive into real-time physical measurement.</p>
+        <div class="chips"><span class="chip">Arduino</span><span class="chip">Sensors</span><span class="chip">LCD</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+      <div class="icon" style="margin:0">📚</div>
+      <div style="flex:1;min-width:240px">
+        <h3 style="margin-bottom:6px">Academic foundations</h3>
+        <p style="font-size:14px">Coursework &amp; labs that shaped how I think: data structures, OOP, DBMS, computer organization, software engineering, discrete mathematics.</p>
+      </div>
+      <div class="chips" style="margin:0"><span class="chip plain">Data Structures</span><span class="chip plain">Java / OOP</span><span class="chip plain">DBMS</span><span class="chip plain">COA</span><span class="chip plain">Software Engg.</span><span class="chip plain">Discrete Maths</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HACKATHONS ============ -->
+<section id="hackathons" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Hackathons</div>
+    <h2 class="reveal">Building <span class="grad">under pressure</span></h2>
+    <p class="sub reveal">My team has taken part in around four hackathons — collaborating on product ideas, prototypes and technical solutions, and placing 4th at the Azuraa event.</p>
+    <div class="bento">
+      <div class="card span4 glow-card reveal">
+        <div class="proj-top"><div class="icon" style="margin-bottom:0">🌦️</div><span class="tag hack">Hackathon · SIH 2026</span></div>
+        <h3 style="font-size:26px;margin:18px 0 4px">WeatherGPT — "SAARTHI"</h3>
+        <p style="color:var(--cyan);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:12px">CONVERSATIONAL AI · WEATHER</p>
+        <p>A conversational AI concept that turns fragmented, technical weather information — bulletins, satellite products, forecast models — into one actionable answer in plain language. Ask in natural language, by text or voice, instead of checking five sources. Selected at the college level for SIH 2026.</p>
+        <p style="margin-top:12px;font-size:14px"><b style="color:#fff">My role:</b> product concept, PRD development, product positioning and presentation material.</p>
+        <div class="chips"><span class="chip">Conversational AI</span><span class="chip">Product design</span><span class="chip">Voice UI</span></div>
+        <div class="proj-links"><a class="plink solid" href="https://saarthi-intelligence.vercel.app/" target="_blank" rel="noopener">View prototype ↗</a></div>
+      </div>
+      <div class="card span2 reveal d1">
+        <div class="icon">🏆</div><h3>Team builds</h3>
+        <p style="font-size:14px">Hackathons are a team sport. Alongside my work, teammates explored their own concepts:</p>
+        <div class="chips"><span class="chip">RentIt — tool-rental concept</span><span class="chip">Bloom It — flower-shop marketplace</span></div>
+        <p style="margin-top:14px;font-size:13.5px;color:var(--faint)">Different projects, one team learning to ship ideas fast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section id="journey" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Learning journey</div>
+    <h2 class="reveal">How I got <span class="grad">here</span></h2>
+    <p class="sub reveal">Not a straight line — a widening spiral. Every step turned into a project.</p>
+    <div class="timeline">
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-card card"><span class="t-when">Foundations</span><h3>Programming &amp; Data Structures</h3><p>C programming, linked lists, structs, algorithms and problem solving — ATM simulation and e-commerce cart projects.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-card card"><span class="t-when">Hardware era</span><h3>Arduino &amp; IoT</h3><p>Sensors, embedded programming and real-time monitoring — VAKaura and the digital pendulum indicator.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-card card"><span class="t-when">Going visual</span><h3>Web Development</h3><p>HTML, CSS, JavaScript, React and Tailwind — discovering UI/UX, glassmorphism and smooth interactions.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-card card"><span class="t-when">Level up</span><h3>AI-Assisted Workflows</h3><p>Rapid prototyping with modern AI tools — idea to working prototype in hours, then understanding every line.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-card card"><span class="t-when">Real systems</span><h3>Backend &amp; SaaS</h3><p>Supabase auth, RLS, SQL triggers — and the LCO CONNECT concept: multi-tenant SaaS for local operators.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot now"></div><div class="t-card card glow-card"><span class="t-when">Right now</span><h3>Data Science × Cybersecurity</h3><p>ML fundamentals and data-oriented problem solving on one side, security fundamentals on the other. The spiral continues.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section id="tools" style="padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Toolbox</div>
+    <h2 class="reveal">Tools I've <span class="grad">explored</span></h2>
+    <p class="sub reveal">Presented honestly — as tools I've explored and experimented with, not mastered.</p>
+    <div class="card reveal" style="margin-top:44px">
+      <div class="chips" style="margin-top:0">
+        <span class="chip">Python</span><span class="chip">C</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Tailwind CSS</span><span class="chip">Supabase</span><span class="chip">SQL</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span><span class="chip">Vercel</span><span class="chip">Claude</span><span class="chip">Manus AI</span><span class="chip">Emergent</span><span class="chip">Devin</span><span class="chip">Codex</span><span class="chip">Antigravity</span><span class="chip">Lovable</span><span class="chip">Framer AI</span><span class="chip">Webflow</span><span class="chip">Gamma</span><span class="chip">Figma</span><span class="chip">Higgsfield</span><span class="chip">Edge Impulse</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" style="padding-top:40px">
+  <div class="wrap">
+    <div class="card reveal glow-card" style="text-align:center;padding:70px 40px;overflow:hidden">
+      <div class="eyebrow" style="justify-content:center">Contact</div>
+      <h2 style="font-size:clamp(32px,5vw,52px)">Have an idea?<br><span class="grad">Let's build it together.</span></h2>
+      <p class="sub" style="margin:0 auto 36px;text-align:center">I'm always up for collaborating on projects, hackathons, or just talking tech. The fastest way to reach me:</p>
+      <div class="hero-ctas" style="justify-content:center;margin-bottom:0">
+        <a class="btn btn-primary" href="https://github.com/yashwanth-boddupalli" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-ghost" href="mailto:25h51a6711@cmrcet.ac.in">Email me ✉</a>
+      </div>
+      <p style="margin-top:26px;font-size:13px;color:var(--faint)">Open to internships, freelance experiments &amp; hackathon teams.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+    <div class="logo" style="font-size:17px">yashwanth<span>.</span></div>
+    <p style="color:var(--faint);font-size:13.5px">© 2026 Yashwanth Boddupalli · Designed &amp; built with curiosity · Learning. Building. Improving.</p>
+    <a href="#home" style="color:var(--muted);font-size:13.5px">Back to top ↑</a>
+  </div>
+</footer>
+
+<style>
+/* ---------- timeline ---------- */
+.timeline{position:relative;margin-top:52px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cyan),var(--violet),var(--pink));border-radius:2px;opacity:.6}
+.t-item{position:relative;margin-bottom:22px}
+.t-dot{position:absolute;left:-33px;top:30px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:3px solid var(--violet);box-shadow:0 0 16px rgba(139,92,246,.6)}
+.t-dot.now{border-color:var(--cyan);box-shadow:0 0 18px rgba(34,211,238,.7);animation:pulse 2s infinite}
+.t-card{padding:26px 30px}
+.t-when{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.t-card h3{font-family:var(--font-d);font-size:19px;margin:8px 0 8px}
+.t-card p{color:var(--muted);font-size:14.5px}
+/* ---------- footer ---------- */
+footer{padding:44px 0 54px;border-top:1px solid rgba(255,255,255,.07)}
+</style>
+
+<script>
+// capture-mode: when opened with #figmacapture=... show final states (for Figma capture)
+if(location.hash.indexOf('figmacapture')>-1){document.documentElement.classList.add('capture-mode')}
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// active nav link
+const secs=[...document.querySelectorAll('section[id],header[id]')];
+const links=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>so.observe(s));
+
+// typing rotator (static full word in capture mode)
+const words=['data science','cybersecurity','AI-assisted development','web apps','IoT & embedded','UI/UX'];
+const typed=document.getElementById('typed');let wi=0,ci=0,del=false;
+if(document.documentElement.classList.contains('capture-mode')){typed.textContent=words[0]}
+else{(function tick(){
+  const w=words[wi];
+  typed.textContent=w.slice(0,ci);
+  if(!del){ci++;if(ci>w.length){del=true;return setTimeout(tick,1700)}}
+  else{ci--;if(ci===0){del=false;wi=(wi+1)%words.length}}
+  setTimeout(tick,del?32:62);
+})();}
+
+// card spotlight follows cursor
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+
+// subtle hero parallax
+const hero=document.querySelector('.hero-inner');
+addEventListener('pointermove',e=>{if(scrollY<innerHeight){const x=(e.clientX/innerWidth-.5)*14,y=(e.clientY/innerHeight-.5)*10;hero.style.transform=`translate(${x}px,${y}px)`}},{passive:true});
+</script>
+</body>
+</html>
